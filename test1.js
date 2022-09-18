@@ -1,4 +1,4 @@
-var src = "111100100011";
+var src = "1111001000111";
 
 var arr = Array.from(src);
 console.log(arr);
