@@ -18,7 +18,7 @@ rl.on("line", (line) => {
             console.log("정답입니다.");
             condi = false;
         } else {
-            console.log("웅앵웅");
+            console.log("틀렸음ㅎ");
             rl.on("line", (line));
 
         }
