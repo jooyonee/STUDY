@@ -19,8 +19,6 @@ rl.on("line", (line) => {
             condi = false;
         } else {
             console.log("틀렸음ㅎ");
-            rl.on("line", (line));
-
         }
     }
     rl.close();
