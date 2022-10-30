@@ -7,8 +7,8 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-let num1 = Math.floor(Math.random()*9 +1);
-let num2 = Math.floor(Math.random()*9 +1);
+let num1 = Math.ceil(Math.random()*9 +1);
+let num2 = Math.ceil(Math.random()*9 +1);
 console.log(num1, '*', num2, '= ?');
 
 rl.on("line", (line) => {
