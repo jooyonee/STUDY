@@ -2,11 +2,11 @@
 
 var body = document.body;
 
-let num1 = Math.ceil(Math.random()*9 +1);
-let num2 = Math.ceil(Math.random()*9 +1);
+let num1 = Math.ceil(Math.random()*9);
+let num2 = Math.ceil(Math.random()*9);
 
 var word = document.createElement('div');
-word.textContent = num1, '*', num2, '= ?';
+word.textContent = String(num1) + ' * ' + String(num2) + ' = ?';
 document.body.append(word);
 
 var form_tag = document.createElement('form');
@@ -17,7 +17,7 @@ form_tag.append(input_blank);
 input_blank.focus();
 
 var input_button = document.createElement('button');
-input_button.textContent = '입력';
+input_button.textContent = 'enter';
 form_tag.append(input_button);
 
 var conclu = document.createElement('div');
@@ -30,8 +30,13 @@ form_tag.addEventListener('submit', function (event1) { //익명함수(콜백함
     while(condi) {
         if (input_blank.value === parseInt(num1 * num2)) {
             conclu.textContent = '정답입니다.';
+            input_blank.value = '';
+            input_blank.focus();
+            condi = false;
         } else {
             conclu.textContent = '틀렸습니다.';
+            input_blank.value = '';
+            input_blank.focus();
         }
     }
 
