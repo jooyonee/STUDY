@@ -40,5 +40,4 @@ form_tag.addEventListener('submit', function (event1) { //익명함수(콜백함
             input_blank.value = '';
             input_blank.focus();
         }
-
 });
