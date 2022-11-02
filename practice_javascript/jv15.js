@@ -1,15 +1,21 @@
 var body = document.body;
 
 
-let random_num_arr = [];
-for (i=0; i<4; i++) {
-  var num = Math.ceil(Math.random() * 9);
-   if (random_num_arr.indexOf(num) === -1) {
-    random_num_arr.push(num);
-  } else {
-    i--;
-  }
-}
+var random_num_arr = [];
+
+function random_numbering() {
+    for (i=0; i<4; i++) {
+    var num = Math.ceil(Math.random() * 9);
+        if (random_num_arr.indexOf(num) === -1) {
+            random_num_arr.push(num);
+        } else {
+            i--;
+        }
+    }
+}  // 반복되는 부분 함수 처리
+
+random_numbering();
+
 var count = 0;  //틀린 횟수 카운트
 
 var conclu = document.createElement('h1');
@@ -60,15 +66,8 @@ form_tag.addEventListener('submit', function (event1) {
     if (inputt === random_num_arr.join('')) {
         conclu.textContent = '맞췄습니다.';
         conclu2.textContent = '';
-            random_num_arr = [];
-            for (i=0; i<4; i++) {
-                var num = Math.ceil(Math.random() * 9);
-                if (random_num_arr.indexOf(num) === -1) {
-                    random_num_arr.push(num);
-                } else {
-                    i--;
-                }
-            }
+            random_numbering();
+
             word.textContent = "뭐게요 맞춰봐요  *hint : " + random_num_arr;
         input_blank.value = '';
         input_blank.focus();
@@ -96,15 +95,8 @@ form_tag.addEventListener('submit', function (event1) {
         
         if (count >= 10) {
             conclu.textContent = '답은 '+ random_num_arr.join('') +'입니다.';
-            random_num_arr = [];
-            for (i=0; i<4; i++) {
-                var num = Math.ceil(Math.random() * 9);
-                if (random_num_arr.indexOf(num) === -1) {
-                    random_num_arr.push(num);
-                } else {
-                    i--;
-                }
-            }
+            random_numbering();
+
             word.textContent = "새로운 문제 : 뭐게요 맞춰봐요  *hint : " + random_num_arr;
             count = 0;
         }
