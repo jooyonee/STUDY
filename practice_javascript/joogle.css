@@ -1,0 +1,31 @@
+body {
+    width: 500px;
+    margin: 0 auto;
+    line-height: 100px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 230px;
+    font-size: 73px;
+}
+
+h1 span:nth-child(1) {
+    color: rgb(74, 118, 236);
+}
+h1 span:nth-child(2) {
+    color: rgb(225, 61, 61);
+}
+h1 span:nth-child(3) {
+    color: rgb(246, 218, 82);
+}
+h1 span:nth-child(4) {
+    color: rgb(74, 118, 236);
+}
+h1 span:nth-child(5) {
+    color: rgb(7, 141, 61);
+}
+h1 span:nth-child(6) {
+    color: rgb(225, 61, 61);
+}
+
