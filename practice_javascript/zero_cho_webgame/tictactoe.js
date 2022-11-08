@@ -23,7 +23,7 @@ for (let i = 0; i < 3; i++) {
             if(event.target.textContent) return;
             event.target.textContent = turn;
             if (turn == 'O') {
-                turn = 'X'; 
+                turn = 'X';
             } else if (turn == 'X') {
                 turn = 'O';
             }
