@@ -99,7 +99,8 @@ for (let i = 0; i < 3; i++) {
 }
 
 
-$table.addEventListener('click', callback);
+$table.addEventListener('click', callback);  
 
 document.body.append($table);
 document.body.append($result);
+
