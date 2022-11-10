@@ -21,6 +21,7 @@ console.log(bonus);
 const $result = document.querySelector('#result');
 const $bonus = document.querySelector('#bonus');
 
+
 const showBall = (number, $target) => {
     const $ball = document.createElement('div');
     $ball.className = 'ball';
@@ -29,12 +30,19 @@ const showBall = (number, $target) => {
     colorize(number, $ball);
 
     $target.append($ball);
+
+    check = 3;
+    console.log(check);
+
 } 
 
 
 
 const callback = () => {
 
+    play();
+
+    
 
 for (let i = 0; i < lotto.length; i++) {
     setTimeout(() => {
@@ -47,7 +55,10 @@ setTimeout(() => {
     showBall(bonus, $bonus);
 }, 7000);
 
-}
+check = 2;
+console.log(check)
+
+};
 
 //ball 색칠 함수
 function colorize(number, $tag) {
@@ -67,5 +78,17 @@ function colorize(number, $tag) {
 
 const $button = document.querySelector('button');
 
+function play() { 
+    var audio = document.getElementById('audio_play'); 
+    if (audio.paused) { 
+        audio.play(); 
+    }else{ 
+        audio.pause(); 
+        audio.currentTime = 0 
+    } 
+} 
 
+
+var check = 1;
+console.log(check);
 $button.addEventListener('click', callback);
