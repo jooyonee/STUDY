@@ -39,8 +39,10 @@ const scoreTable = {
 };
 
 let score = 0;
+let mscore = 0;
+let Comscore = 0;
 
-let intervalId = setInterval(changeComputerHand, 500);
+let intervalId = setInterval(changeComputerHand, 50);
 
 
 let clickable = true;   // flag변수
@@ -69,25 +71,36 @@ const clickBtn = () => {
         }
         else if ([2, -1].includes(diff)) {
             message = '승리!';
-            score += 1;
+            mscore += 1;
         }
         else if (diff == 1 || diff == -2) {
             message = '패배!';
-            score -= 1;
+            Comscore += 1;
         }
 
-        $score.textContent = `${message} 총 : ${score}점`;
+        $score.textContent = `${message} 총 : ${mscore}점`;
 
-        setTimeout(() => {
-            clickable = true;
-            intervalId = setInterval(changeComputerHand, 500); //타이머 마다 intervalId가 달라지니까 계속 변수에 저장해줘야 함. (예전 타이머로 지금 타이머를 멈출 수는 없음.)
-        }, 1500);  
+        
+        if (mscore >= 3) {
+            console.log('win!');
+            clearInterval(intervalId);
+            clickable = false;
+            clearTimeout();
+        }
+        else {
+            setTimeout(() => {
+                clickable = true;
+                intervalId = setInterval(changeComputerHand, 50); //타이머 마다 intervalId가 달라지니까 계속 변수에 저장해줘야 함. (예전 타이머로 지금 타이머를 멈출 수는 없음.)
+            }, 1000);
+        }
+        
+
     }
 }
+
+
 
 rock.addEventListener('click', clickBtn);
 scissors.addEventListener('click', clickBtn);
 paper.addEventListener('click', clickBtn);
-
-
 
