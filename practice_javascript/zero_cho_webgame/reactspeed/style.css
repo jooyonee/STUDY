@@ -8,6 +8,17 @@ div #display {
     border: 2px solid pink;
     background-color: gray;
 }
+#display.waiting {
+
+}
+#display.ready {
+    
+}
+#display.go {
+    
+}
+
+
 
 .window {
     position: relative;
@@ -15,7 +26,14 @@ div #display {
 
 .window button {
     position: absolute;
-    margin-left: 215px;
-    margin-top: 20px;
+    margin-left: 218px;
+    margin-top: 15px;
+}
+
+.window #result {
+    height: 40px;
+    width: 500px;
+    border: 1px solid white;
+    margin : 50px 0 0 2px;
 }
 
