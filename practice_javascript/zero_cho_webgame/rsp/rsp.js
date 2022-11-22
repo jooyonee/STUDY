@@ -16,6 +16,7 @@ const rsp_x = {
     paper : '-440px',
 };
 
+let hand = 'scissors';
 const changeComputerHand = () => {    
         if (hand === 'scissors') {
             hand = 'rock';
@@ -31,7 +32,6 @@ const changeComputerHand = () => {
 }
 
 
-
 const scoreTable = {
     rock : 0,
     scissors : 1,
@@ -39,8 +39,7 @@ const scoreTable = {
 };
 
 let score = 0;
-let message;
-let hand = 'scissors';
+
 let intervalId = setInterval(changeComputerHand, 500);
 
 
@@ -52,12 +51,19 @@ const clickBtn = () => {
         clearInterval(intervalId);
         clickable = false;
 
-        const myhand = event.target.id;
+        const myhand = event.target.textContent === '바위' ? 
+        'rock' : event.target.textContent === '가위' ? 
+            'scissors' : 'paper';
+
+        console.log(myhand);
 
         const myscore = scoreTable[myhand];
         const computerscore = scoreTable[hand];
-        const diff = myscore = computerscore;
+        const diff = myscore - computerscore;
 
+        console.log(myscore, computerscore, diff);
+        
+        let message;
         if (diff == 0) {
             message = '무승부!';
         }
@@ -73,10 +79,9 @@ const clickBtn = () => {
         $score.textContent = `${message} 총 : ${score}점`;
 
         setTimeout(() => {
-            clearInterval(intervalId);
-            intervalId = setInterval(changeComputerHand, 500); //타이머 마다 intervalId가 달라지니까 계속 변수에 저장해줘야 함. (예전 타이머로 지금 타이머를 멈출 수는 없음.)
             clickable = true;
-        }, 1000);  
+            intervalId = setInterval(changeComputerHand, 500); //타이머 마다 intervalId가 달라지니까 계속 변수에 저장해줘야 함. (예전 타이머로 지금 타이머를 멈출 수는 없음.)
+        }, 1500);  
     }
 }
 
