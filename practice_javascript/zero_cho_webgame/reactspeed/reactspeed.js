@@ -8,7 +8,7 @@ display.textContent = '클릭해서 시작하세요';
 //classList 객체를 써주면 된다! -> display.classList.
 
 const random_num = Math.floor(Math.random()* 1000 + 2000);
-console.log(random_num);
+// console.log(random_num);
 
 
 // let flag = true;
@@ -32,7 +32,7 @@ console.log(random_num);
 let startTime;
 let endTime;
 let records = [];
-
+let timer;
 let count = 0;
 display.addEventListener('click', (event) => {
     
@@ -40,7 +40,7 @@ display.addEventListener('click', (event) => {
         display.classList.remove('waiting');
         display.classList.add('ready');
         display.textContent = '초록색이 되면 클릭하세요';
-        setTimeout(function () {
+        timer = setTimeout(function () {
             display.classList.remove('ready');
             display.classList.add('go');
             display.textContent = '지금이야!';
@@ -48,7 +48,11 @@ display.addEventListener('click', (event) => {
         }, random_num);
     }
     else if (event.target.classList.contains('ready')) {
-        console.log('성급합니다 ㅡㅡ');
+        clearTimeout(timer);
+        display.classList.remove('ready');
+        display.classList.add('waiting');
+        display.textContent = '너무 성급합니다!';
+
     }
     else if (event.target.classList.contains('go')) {
         endTime = new Date();
@@ -57,13 +61,15 @@ display.addEventListener('click', (event) => {
         count++;
         display.classList.remove('go');
         display.classList.add('waiting');
-        display.textContent = '초록색이 되면 클릭하세요';
+        display.textContent = '클릭해서 시작하세요';
     }
 
-    const average = records.reduce((a,c) => a + c / records.length);
-    
-    if (count === 4) {
-        result.textContent = `반응속도 평균 ${average / 5} 입니다.`;
+    console.log(records);
+    const average = records.reduce((a,c) => { 
+        return a + c / records.length });
+
+    if (count === 5) {
+        result.textContent = `반응속도 평균 ${average} 입니다.`;
     }
 });
 
