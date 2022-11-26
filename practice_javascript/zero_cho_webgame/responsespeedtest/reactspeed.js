@@ -27,7 +27,7 @@ const random_num = Math.floor(Math.random()* 1000 + 2000);
 //     }
     
 // }
-// btn.addEventListener('click', clickBtn);
+// btn.addEventListener('click', clickBtn);   flag변수 둬서 해보려고 시도했었음!
  
 let startTime;
 let endTime;
