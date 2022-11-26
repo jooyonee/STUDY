@@ -64,12 +64,23 @@ display.addEventListener('click', (event) => {
         display.textContent = '클릭해서 시작하세요';
     }
 
-    console.log(records);
+    // console.log(records);
     const average = records.reduce((a,c) => { 
         return a + c / records.length });
 
-    if (count === 5) {
+    
+
+    if (count === 3) {
         result.textContent = `반응속도 평균 ${average} 입니다.`;
+        const topFive = records.sort((x, y) => {
+            return x - y;
+        }).slice(0, 2);
+    
+        topFive.forEach((top, index) => {
+            result.append(document.createElement('br'),
+            `${index + 1}위 : ${top}ms`);
+        });
     }
 });
+
 
