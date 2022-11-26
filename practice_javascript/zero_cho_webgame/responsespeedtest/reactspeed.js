@@ -46,6 +46,11 @@ display.addEventListener('click', (event) => {
             display.textContent = '지금이야!';
             startTime = new Date();
         }, random_num);
+        if (count === 3) {
+            count = 0;
+            result.textContent = '';
+            records = [];
+        }
     }
     else if (event.target.classList.contains('ready')) {
         clearTimeout(timer);
@@ -62,21 +67,19 @@ display.addEventListener('click', (event) => {
         display.classList.remove('go');
         display.classList.add('waiting');
         display.textContent = '클릭해서 시작하세요';
+        console.log(records);
     }
 
-    // console.log(records);
     const average = records.reduce((a,c) => { 
         return a + c / records.length });
-
+    const toptwo = records.sort((x, y) => {
+        return x - y;
+    }).slice(0, 2);
     
 
     if (count === 3) {
         result.textContent = `반응속도 평균 ${average} 입니다.`;
-        const topFive = records.sort((x, y) => {
-            return x - y;
-        }).slice(0, 2);
-    
-        topFive.forEach((top, index) => {
+        toptwo.forEach((top, index) => {
             result.append(document.createElement('br'),
             `${index + 1}위 : ${top}ms`);
         });
