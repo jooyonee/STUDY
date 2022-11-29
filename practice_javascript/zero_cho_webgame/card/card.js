@@ -2,10 +2,10 @@ const total = 12;
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
 let shuffled = [];
-let colorcopy = colors.concat(colors);  //배열복사해서 뒤에 붙여넣기(*2)
+let colorcopy = colors.concat(colors); //배열복사해서 뒤에 붙여넣기(*2)
 let clickable = true;
-let correct = [];
 let clicked = [];
+let correct = [];
 
 
 //  카드 섞는 함수
@@ -38,8 +38,8 @@ function createCard(i) {
 
 const $wrapper = document.querySelector('#wrapper');
 
-// 카드 두 장(한 쌍) 클릭할때마다
 
+// 카드 두 장(한 쌍) 클릭할때마다
 function onClickCard() {
 
     this.classList.toggle('flipped');
@@ -47,12 +47,13 @@ function onClickCard() {
     if (clicked.length !== 2) {
         return;  // 2장 선택 안 했으면 대기
     }
-    const firstcard = clicked[0].querySelector('card_back').style.backgroundColor;
-    const secondcard = clicked[1].querySelector('card_back').style.backgroundColor;
-
+    const firstcard = clicked[0].querySelector('.card_back').style.backgroundColor;
+    const secondcard = clicked[1].querySelector('.card_back').style.backgroundColor;
     if (firstcard == secondcard) {
         correct.push(clicked[0]);
         correct.push(clicked[1]);
+        clicked[0].removeEventListener('click', onClickCard);
+        clicked[1].removeEventListener('click', onClickCard);
         clicked = [];
         return;
     }

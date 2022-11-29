@@ -17,7 +17,7 @@
     height: 100%;
     text-align: center;
     transition: transform 0.8s; 
-    transform: preserve-3d;
+    transform-style: preserve-3d;  
 }
 
 
@@ -27,7 +27,6 @@
 
 .card_front {
     background: black;
-    border-radius: 40px;
 }
 
 .card_front, .card_back {
@@ -37,8 +36,8 @@
     border: 1px solid black;
     backface-visibility: hidden;
 }
-/* 
+
  .card_back {
     transform: rotateY(180deg);
-} */
+}
 
